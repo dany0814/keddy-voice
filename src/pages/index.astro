@@ -4,6 +4,8 @@ import Header from '../components/Header.astro';
 import Home from '../components/Home.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import NavBar from '../components/NavBar.astro';
+// Component Imports
+import Microphone from '../components/Microphone.jsx';
 ---
 
 <!DOCTYPE html>
@@ -16,6 +18,9 @@ import NavBar from '../components/NavBar.astro';
 			<NavBar></NavBar>
 			<!-- <Header title={SITE_TITLE} /> -->
 			<Home></Home>
+			<Microphone client:load>
+				<h1>Hello, React!</h1>
+			</Microphone>
 		<!-- <Footer /> -->
 		</div>
 	</body>
