@@ -1,0 +1,147 @@
+<script
+  src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+  defer></script>
+<style>
+  input:checked {
+    background-color: #000000; /* bg-green-500 */
+  }
+
+  input:checked ~ span:last-child {
+    --tw-translate-x: 1.75rem; /* translate-x-7 */
+  }
+</style>
+<div
+  class="flex dark:bg-gray-900 bg-yellow py-3 px-5 bg-white rounded-3xl shadow-xl"
+>
+  <!-- Botón de Donación -->
+  <div class="w-auto">
+    <ul class="mt-2 mb-1">
+      <li>
+        <button
+          class="sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden middle none center rounded-lg bg-pink-500 p-2 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          data-ripple-light="true"
+        >
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart-dollar" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M13 19l-1 1l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 0 1 8.785 4.444"></path>
+          <path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"></path>
+          <path d="M19 21v1m0 -8v1"></path>
+       </svg>
+        </button>
+        <a
+          href="#donacion"
+          class="xs:hidden mx-5 py-10px font-bold hover:text-black text-white dark:text-black dark:bg-white p-3 mt-2 rounded-3xl hover:bg-white dark:text-black rounded-50px cursor-pointer
+          bg-dark dark:hover:bg-yellow  border border-gray-100  dark:text-black text-black border-0"
+          >Apóyanos❣️</a
+        >
+      </li>
+    </ul>
+  </div>
+  <!-- Logo favorito -->
+  <ul class="w-full items-center h-12">
+    <!-- logo negro -->
+    <div class="h-12 w-12 dark:hidden item-center mx-auto <md:item-end">
+      <img src="./keddy-gordita-light.svg" alt="iris-logo" />
+    </div>
+    <!-- logo blanco -->
+    <div
+      class="h-12 w-12 invisible dark:visible item-center mx-auto <md:item-end"
+    >
+      <img src="./keddy-gordita-dark.svg" alt="iris-logo" />
+    </div>
+  </ul>
+  <div class="items-center z-5 ml-auto h-7 my-auto flex">
+    <label
+      class="mx-2rem flex items-center relative w-max cursor-pointer select-none"
+    >
+      <input
+        id="btn-BLmode"
+        type="checkbox"
+        class="peer appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none bg-hex-4646fa"
+      />
+      <span class="absolute font-medium text-xs uppercase right-1 text-white">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-sun-high"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z"
+          ></path>
+          <path d="M6.343 17.657l-1.414 1.414"></path>
+          <path d="M6.343 6.343l-1.414 -1.414"></path>
+          <path d="M17.657 6.343l1.414 -1.414"></path>
+          <path d="M17.657 17.657l1.414 1.414"></path>
+          <path d="M4 12h-2"></path>
+          <path d="M12 4v-2"></path>
+          <path d="M20 12h2"></path>
+          <path d="M12 20v2"></path>
+        </svg>
+      </span>
+      <span class="absolute font-medium text-xs uppercase right-8 text-white">
+
+        <!-- copy -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-moon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
+          ></path>
+        </svg>
+      </span>
+      <span
+        class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200"
+      ></span>
+    </label>
+  </div>
+
+  <script>
+    const btn = document.getElementById("btn-BLmode") as HTMLInputElement;
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.remove("light");
+      document.documentElement.classList.add("dark");
+      btn!.checked = false;
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
+      btn!.checked = true;
+    }
+    console.log(btn!.checked);
+    var toggleDarkMode = document.documentElement.className === "dark";
+
+    btn!.addEventListener("click", () => {
+      toggleDarkMode = document.documentElement.className === "dark";
+      if (toggleDarkMode) {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
+        localStorage.theme = "light";
+      } else {
+        document.documentElement.classList.remove("light");
+        document.documentElement.classList.add("dark");
+        localStorage.theme = "dark";
+      }
+    });
+  </script>
+</div>
